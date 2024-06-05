@@ -45,15 +45,20 @@
                 const pdbFile = pdbSelect.value;
                 const [res1, res2] = pdbData[pdbFile][index];
 
-                stage.eachComponent(function (component) {
-                    component.removeAllRepresentations();
-                    component.addRepresentation("cartoon");
-                    component.addRepresentation("ball+stick", {
-                        sele: res1 + ',' + res2,
-                        color: "red"
-                    });
-                });
-            });
+	    	stage.eachComponent(function (component) {{
+			component.removeAllRepresentations();
+			component.addRepresentation("cartoon");
+			component.addRepresentation("ball+stick", {{
+			    sele: res1,
+			    color: "red"
+			}});
+			component.addRepresentation("ball+stick", {{
+			    sele: res2,
+			    color: "red"
+			}});
+		    }});
+		}});
+
 
             function loadPdbFile(pdbFile) {
                 stage.removeAllComponents();
