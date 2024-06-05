@@ -50,18 +50,16 @@
                 const [res1, res2] = pdbData[pdbFile][index];
                 const blurb = blurbData[pdbFile][index];
 
-                stage.eachComponent(function (component) {{
+                stage.eachComponent(function (component) {
                     component.removeAllRepresentations();
                     component.addRepresentation("cartoon");
-                    component.addRepresentation("ball+stick", {{
-                        sele: `${res1}, ${res2}`,
+                    component.addRepresentation("ball+stick", {
+			    sele: `${res1}, ${res2}`,
                         color: "red"
-                    }});
-                }});
-
-                // Display the blurb
-                blurbDiv.innerHTML = `<p>$\\{blurb}</p>`;
-
+                    });
+                });
+	    	// Display the blurb
+	    	blurbDiv.innerHTML = `<p>${blurb}</p>`;
             });
 
             function loadPdbFile(pdbFile) {
