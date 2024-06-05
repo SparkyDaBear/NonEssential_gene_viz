@@ -16,7 +16,7 @@
                 var coloredResidues = {};
 
                 // Load the PDB file
-                $.get('../PDBs/P00370_4BHT_F.pdb', function(data) {
+                $.get('./PDBs/P00370_4BHT_F.pdb', function(data) {
                     pdbData = data;
                     viewer.addModel(data, "pdb");
                     viewer.setStyle({}, {cartoon: {color: 'spectrum'}});
