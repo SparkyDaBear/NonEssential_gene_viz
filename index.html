@@ -76,6 +76,11 @@
                         option.text = pair.join(" & ");
                         residueSelect.appendChild(option);
                     });
+
+		    // Manually trigger the change event if there is only one option
+		    if (residueSelect.options.length === 1) {
+		        residueSelect.dispatchEvent(new Event('change'));
+		    }
                 });
             }
 
