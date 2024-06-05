@@ -49,11 +49,7 @@
                     component.removeAllRepresentations();
                     component.addRepresentation("cartoon");
                     component.addRepresentation("ball+stick", {
-                        sele: ':' + res1,
-                        color: "red"
-                    });
-                    component.addRepresentation("ball+stick", {
-                        sele: ':' + res2,
+                        sele: res1 + ',' + res2,
                         color: "red"
                     });
                 });
