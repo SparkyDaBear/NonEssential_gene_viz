@@ -1,0 +1,42 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Protein Structure Visualization</title>
+            <script src="https://3dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+        </head>
+        <body>
+            <div style="width: 800px; height: 400px; position: relative;" id="pdbViewer"></div>
+            <select id="residueSelector" onchange="toggleResidueVisibility()">
+                <option value="24">108</option><option value="24">111</option><option value="84">111</option><option value="115">434</option>
+            </select>
+            <script>
+                var viewer = $3Dmol.createViewer("pdbViewer", {backgroundColor: "white"});
+                var pdbData = null;
+                var coloredResidues = {};
+
+                // Load the PDB file
+                $.get('../PDBs/P00370_4BHT_F.pdb', function(data) {
+                    pdbData = data;
+                    viewer.addModel(data, "pdb");
+                    viewer.setStyle({}, {cartoon: {color: 'spectrum'}});
+                    viewer.zoomTo();
+                    viewer.render();
+                });
+
+                // Function to toggle residue visibility based on dropdown selection
+                function toggleResidueVisibility() {
+                    var resNum = document.getElementById('residueSelector').value;
+                    if (coloredResidues[resNum]) {
+                        viewer.setStyle({resi: parseInt(resNum)}, {cartoon: {color: 'spectrum'}});
+                        coloredResidues[resNum] = false;
+                    } else {
+                        viewer.setStyle({resi: parseInt(resNum)}, {stick: {colorscheme: 'redCarbon'}});
+                        coloredResidues[resNum] = true;
+                    }
+                    viewer.render();
+                }
+            </script>
+        </body>
+        </html>
+        
