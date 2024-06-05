@@ -49,11 +49,7 @@
                     component.removeAllRepresentations();
                     component.addRepresentation("cartoon");
                     component.addRepresentation("ball+stick", {
-                        sele: res1,
-                        color: "red"
-                    });
-                    component.addRepresentation("ball+stick", {
-                        sele: res2,
+                        sele: res1 + ',' + res2,
                         color: "red"
                     });
                 });
@@ -73,12 +69,6 @@
                         option.text = pair.join(" & ");
                         residueSelect.appendChild(option);
                     });
-
-                    // Trigger the change event for the first option
-                    if (residueSelect.options.length > 0) {
-                        residueSelect.value = 0;
-                        residueSelect.dispatchEvent(new Event('change'));
-                    }
                 });
             }
 
